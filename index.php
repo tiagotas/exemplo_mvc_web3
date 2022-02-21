@@ -3,10 +3,24 @@
 $uri_parse = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 echo $uri_parse;
+
+
 echo "<hr />";
 
 switch($uri_parse)
-{   
+{ 
+    
+    case '/formulario':
+        include 'View/udy.php';
+    break;
+
+    case '/processa':
+        echo "vai pegar o que o usuário digitou <br />";
+        echo $_POST['nome'];
+        echo "<br />";
+        var_dump($_POST);
+    break;
+
     case '/produto':
         echo "listar produtos";
     break;

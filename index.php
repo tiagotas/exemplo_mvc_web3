@@ -13,6 +13,10 @@ switch($uri_parse)
         PessoaController::index();
     break;
 
+    case '/pessoa/form':
+        PessoaController::form();
+    break;
+
     case '/pessoa/save':
         PessoaController::save();
     break;

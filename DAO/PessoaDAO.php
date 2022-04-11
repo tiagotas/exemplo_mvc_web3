@@ -65,4 +65,26 @@ class PessoaDAO
         // Ao fim, onde todo SQL está montando, executamos a consulta.
         $stmt->execute();      
     }
+
+    /**
+     * Retorna todas as linhas de uma tabela no bancod e dados.
+     */
+    public function getAllRows()
+    {
+        // Instrução SQL a ser consultada no banco de dados.
+        $sql = "SELECT id, nome, cpf FROM pessoa ";
+
+        // Preparando o SQL para ser executado.
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->execute(); // Executando a SQL preparada.
+
+        // Retornando todas as linhas obtidas na consulta.
+        // É retornado um array associativo, uma estrutura
+        // chave-valor, por exemplo:
+        // array( 
+        //        array('id' => 1, 'nome' => 'Rapha'), 
+        //        array('id' => 3, 'nome' => 'Portugal') 
+        //      )
+        return $stmt->fetchAll(); 
+    }
 }

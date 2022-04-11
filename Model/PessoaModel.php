@@ -9,6 +9,11 @@ class PessoaModel
     public $data_nascimento, $email;
     public $telefone, $endereco;
 
+    /**
+     * Armazena o array vindo da DAO com todos os itens vindo da tabela.
+     */
+    public $rows;
+
 
     /**
      * Declaração do método save que chamará a DAO para gravar no banco de dados
@@ -29,5 +34,21 @@ class PessoaModel
         } else {
             // update
         }
+    }
+
+    /**
+     * Retorna todos os registros.
+     */
+    public function getAllRows()
+    {
+        // incluindo o arquivo PessoaDAO.php
+        include 'DAO/PessoaDAO.php';
+
+        // Instanciando a classe PessoaDAO
+        $dao = new PessoaDAO();
+
+        // Obtendo todos os registros vindos de getAllRows e guardando
+        // na propriedade $rows
+        $this->rows = $dao->getAllRows();
     }
 }
